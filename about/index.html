@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
     <title>
         swanf
+        
+            | 电池已有足够电量。
         
     </title>
     <meta charset="UTF-8"/>
@@ -17,6 +19,8 @@
 <meta name="keywords" content="nlvi, Nlvi" />
 
 
+    <meta name="subtitle" content="电池已有足够电量。">
+
 
     <meta name="description" content="java/web养成中">
 
@@ -28,19 +32,15 @@
     var CONFIG = {
         title: "swanf",
         author: "swanf",
-        lightbox: true,
-        animate: true
+        lightbox: ,
+        animate: 
     }
 </script>
 
 
 
-    <link rel="stylesheet" href="/lightbox/css/lightbox.min.css">
 
 
-
-
-    <link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
 
 
 
@@ -70,6 +70,8 @@
             <div class="connect-inner">
                 <span><a href="/">swanf</a></span>
                 
+                    <span id="subtitle">电池已有足够电量。</span>
+                
             </div>
         </div>
     </div>
@@ -77,121 +79,12 @@
     <nav class="main-nav syuanpi tvIn">
 <div class="table">
 
-    <ul class="menu">
-        
-        <li class="menu-item">
-            <a href="javascript:;" id="search">
-                <span>Search</span>
-                
-                    <span class="menu-item-label">search</span>
-                
-            </a>
-        </li>
-        
-        
-        
-            <li class="menu-item">
-                <a href="/">
-                    <span>Article</span>
-                    
-                        <span class="menu-item-label">article</span>
-                    
-                </a>
-            </li>
-        
-        
-        
-            <li class="menu-item">
-                <a href="/archives">
-                    <span>Archives</span>
-                    
-                        <span class="menu-item-label">archives</span>
-                    
-                </a>
-            </li>
-        
-        
-        
-            <li class="menu-item">
-                <a href="javascript:;" id="tags">
-                    <span>Tags</span>
-                    
-                        <span class="menu-item-label">tags</span>
-                    
-                </a>
-            </li>
-        
-        
-        
-            <li class="menu-item">
-                <a href="/about">
-                    <span>About</span>
-                    
-                        <span class="menu-item-label">about</span>
-                    
-                </a>
-            </li>
-        
-        
-    </ul>
-
 </div>
 </nav>
 </header>
 <div class="mobile-header">
     <div class="mobile-header-body">
         <div class="mobile-header-list">
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/">
-                        <span>Article</span>
-                        
-                            <span class="menu-item-label">article</span>
-                        
-                    </a>
-                </div>
-            
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/archives">
-                        <span>Archives</span>
-                        
-                            <span class="menu-item-label">archives</span>
-                        
-                    </a>
-                </div>
-            
-            
-            
-                <div class="mobile-nav-item inner-cloud">
-                    <div class="mobile-nav-tag">
-                        <a href="javascript:;" id="mobile-tags">
-                            <span>Tags</span>
-                            
-                                <span class="menu-item-label">tags</span>
-                            
-                        </a>
-                    </div>
-                    <div class="mobile-nav-tagcloud">
-                        <div class="mobile-tagcloud-inner">
-                            
-                        </div>
-                    </div>
-                </div>
-            
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/about">
-                        <span>About</span>
-                        
-                            <span class="menu-item-label">about</span>
-                        
-                    </a>
-                </div>
-            
             
         </div>
     </div>
@@ -213,7 +106,7 @@
             
         
             <div class="about syuanpi riseIn-light">
-                <h2 class="title"> About </h2>
+                <h2 class="title"> 关于 </h2>
                 <div class="content">  </div>
             </div>
             
@@ -239,17 +132,17 @@
             <div class="copyright">
     <div class="info">
         <span>&copy;</span>
-        <span>1970 ~ 2017</span>
+        <span> ~ 2017</span>
         <span>❤</span>
         <span>swanf</span>
     </div>
     <div class="theme">
         <span>
-            Powered by
+            动力来源于
             <a href="http://hexo.io/" target="_blank">Hexo </a>
         </span>
         <span>
-            Theme
+            主题
             <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
         </span>
     </div>
@@ -261,8 +154,6 @@
     </div>
     <script src="/script/nlvi.js"></script>
 <script src="/script/search.js"></script>
-
-    <script src="/lightbox/js/lightbox.min.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -302,11 +193,11 @@ $(document).ready(function(){
     </div>
     <script>
     var GREETING = {
-        morning: "当我们探索时，就要发现到真理",
-        noon: "人的天职在于勇于探索真理。",
-        after: "一件事实是一条没有性别的真理",
-        night: "真理有时可能变得黯淡，但它永远不会熄灭",
-        midnight: "真理在人那里获得生命力，并且展现出来"
+        morning: "",
+        noon: "",
+        after: "",
+        night: "",
+        midnight: ""
     }
     $(document).ready(function(){
         Nlvi.search();
