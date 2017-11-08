@@ -32,15 +32,19 @@
     var CONFIG = {
         title: "swanf",
         author: "swanf",
-        lightbox: ,
-        animate: 
+        lightbox: true,
+        animate: true
     }
 </script>
 
 
 
+    <link rel="stylesheet" href="/lightbox/css/lightbox.min.css">
 
 
+
+
+    <link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
 
 
 
@@ -79,12 +83,121 @@
     <nav class="main-nav syuanpi tvIn">
 <div class="table">
 
+    <ul class="menu">
+        
+        <li class="menu-item">
+            <a href="javascript:;" id="search">
+                <span>搜索</span>
+                
+                    <span class="menu-item-label">search</span>
+                
+            </a>
+        </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/">
+                    <span>文章</span>
+                    
+                        <span class="menu-item-label">article</span>
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/archives">
+                    <span>归档</span>
+                    
+                        <span class="menu-item-label">archives</span>
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="javascript:;" id="tags">
+                    <span>标签</span>
+                    
+                        <span class="menu-item-label">tags</span>
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/about">
+                    <span>关于</span>
+                    
+                        <span class="menu-item-label">about</span>
+                    
+                </a>
+            </li>
+        
+        
+    </ul>
+
 </div>
 </nav>
 </header>
 <div class="mobile-header">
     <div class="mobile-header-body">
         <div class="mobile-header-list">
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/">
+                        <span>文章</span>
+                        
+                            <span class="menu-item-label">article</span>
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/archives">
+                        <span>归档</span>
+                        
+                            <span class="menu-item-label">archives</span>
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item inner-cloud">
+                    <div class="mobile-nav-tag">
+                        <a href="javascript:;" id="mobile-tags">
+                            <span>标签</span>
+                            
+                                <span class="menu-item-label">tags</span>
+                            
+                        </a>
+                    </div>
+                    <div class="mobile-nav-tagcloud">
+                        <div class="mobile-tagcloud-inner">
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/about">
+                        <span>关于</span>
+                        
+                            <span class="menu-item-label">about</span>
+                        
+                    </a>
+                </div>
+            
             
         </div>
     </div>
@@ -107,7 +220,7 @@
         
             <div class="about syuanpi riseIn-light">
                 <h2 class="title"> 关于 </h2>
-                <div class="content">  </div>
+                <div class="content"> 你好，我是swanf，一名年轻活力的Java开发者。我热衷于探索自己的潜能，以不屈的意志、隐忍的态度，慢慢走出自己的路。我热爱滑板、吉他、摇滚、旅游。 <br><br> Hi there, I'm swanf, a young Java developper from China. I'm keen on explore my protentials and I'm determined. I want to find out my way of life. I love skating, guitar and travelling. And yep, I'm a fan of rock(Especially Postpunk/Punk/Britpop). <br><br> Salut, Je m'appele swanf. Je suis un jeune développeur de Java et je suis originaire de la Chine. Je suis fervent de m'explorer toutes les possibilités. Je suis constant. Je préférerais que je trouve mon chemin de la vie. J'aime jouer de la guitare, jouer du skateboard et voyager. Et alors, j'aime bien le rock(surtout Postpunk/Punk/Britpop). </div>
             </div>
             
         
@@ -126,13 +239,23 @@
     
     
     
+        
+            <a href="https://github.com/swanf" class="iconfont icon-github" title="github"></a>
+        
+        
+        
+        
+        
+        
+        
+    
 </div>
         </div>
         <div class="right">
             <div class="copyright">
     <div class="info">
         <span>&copy;</span>
-        <span> ~ 2017</span>
+        <span>2017 ~ 2017</span>
         <span>❤</span>
         <span>swanf</span>
     </div>
@@ -154,6 +277,8 @@
     </div>
     <script src="/script/nlvi.js"></script>
 <script src="/script/search.js"></script>
+
+    <script src="/lightbox/js/lightbox.min.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -193,11 +318,11 @@ $(document).ready(function(){
     </div>
     <script>
     var GREETING = {
-        morning: "",
-        noon: "",
-        after: "",
-        night: "",
-        midnight: ""
+        morning: "当我们探索时，就要发现到真理",
+        noon: "人的天职在于勇于探索真理。",
+        after: "一件事实是一条没有性别的真理",
+        night: "真理有时可能变得黯淡，但它永远不会熄灭",
+        midnight: "真理在人那里获得生命力，并且展现出来"
     }
     $(document).ready(function(){
         Nlvi.search();
