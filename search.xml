@@ -10,7 +10,7 @@
 <!-- 设计模式 -->
 <!-- - 策略process -->
 <!-- - 装饰器decorator -->
-<p>内容很混乱，都是当时看书时用md随手做的的笔记。<br>目录</p>
+<p>目录</p>
 <ol>
 <li>访问控制</li>
 <li>类的重用</li>
@@ -18,7 +18,8 @@
 <li>正则表达式</li>
 <li>I/O</li>
 <li>注解（只写了一点点）</li>
-<li>并发（涉及了同步队列和构件）</li>
+<li>并发（涉及了同步队列和构件）  <a id="more"></a>
+(内容很混乱，都是当时看书时用md随手做的的笔记)</li>
 </ol>
 <hr>
 <h1 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h1><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><p>访问控制具体关注的是client和library creator之间的一种沟通communication</p>
@@ -26,7 +27,7 @@
 <li>一个java文件里面只能有一个public的class</li>
 <li>.java文件编译之后后缀变成了.class，这就是一个可以工作的程序了。可以通过jar archiver打包变成<br>JAR执行。和普通文件编译直接变成可执行文件或库library不一样。</li>
 <li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。</li>
-<li>所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。<a id="more"></a></li>
+<li>所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。</li>
 <li>package必须是非注释代码的第一行。</li>
 <li>包的停用，如果出现目录中找不到类而它却明明在里面的信息，试着注释掉package语句</li>
 </ol>
