@@ -290,11 +290,13 @@
 </ul>
 <h2 id="static-final"><a href="#static-final" class="headerlink" title="static final"></a>static final</h2><p>能说明这个primitive是一个compile-time值，它不会随着时间的改变而变化。在内存中一直占据同一个位置。而只有final只是说明它是一个不能够被重新赋值的值，但是每次new它所在类的时候都会被重新初始化（加了static只能被初始化一次）。</p>
 <h2 id="以前的"><a href="#以前的" class="headerlink" title="以前的"></a>以前的</h2><p>Vector 和 Hashtable 被现代java的 ArrayList 和 HashMap 替代啦～</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><!-- # 类型信息 --></h2><h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h2 id="万事万物皆对象"><a href="#万事万物皆对象" class="headerlink" title="万事万物皆对象"></a>万事万物皆对象</h2><p>所以说，类也是一个对象，它是java.util.Class的实例对象</p>
+<!-- # 类型信息 -->
+<hr>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h2 id="万事万物皆对象"><a href="#万事万物皆对象" class="headerlink" title="万事万物皆对象"></a>万事万物皆对象</h2><p>所以说，类也是一个对象，它是java.util.Class的实例对象</p>
 <h2 id="实例对象的表示"><a href="#实例对象的表示" class="headerlink" title="实例对象的表示"></a>实例对象的表示</h2><p>有三种方法：<br><code>myClass c = new myClass();</code> c是myClass的实例对象   </p>
 <ol>
 <li><blockquote>
-<p>Class c1 = myClass.class;<br> c1、c2是Class类的实例对象，是myClass类的类类型（class type），有点元实例对象的感觉</p>
+<p>Class c1 = myClass.class;<br> // c1、c2是Class类的实例对象，是myClass类的类类型（class type），有点元实例对象的感觉</p>
 </blockquote>
 </li>
 <li><blockquote>
@@ -314,7 +316,7 @@
 <li>Class.forName(“”)不仅表示了类类型，还代表了”动态加载类”。区分好编译和运行。编译时加载的是静态加载类，运行时加载的是动态加载类。</li>
 <li>功能性的类，尽量使用动态加载<ol>
 <li>new 出来的对象是”静态加载类”，在编译时刻就需要加载所有可能用到的类。就是说一个类加载不成，程序就会报错，整个垮掉。</li>
-<li>而用Class.forName()编译的时候完全没问题的，不会管你的类错不错。可以在运行时再加载，运行到加载出错之前的都能顺利使用。<br>eg. &gt; Class c1 = double.class; <em>double这个数据类型的类类型</em><br>Class c2 = Double.class; <em>Double这个封装类的类类型</em><br>Class c3 = void.class;</li>
+<li>而用Class.forName()编译的时候完全没问题的，不会管你的类错不错。可以在运行时再加载，运行到加载出错之前的都能顺利使用。<br>eg. &gt;Class c1 = double.class; <em>double这个数据类型的类类型</em><br>Class c2 = Double.class; <em>Double这个封装类的类类型</em><br>Class c3 = void.class;</li>
 </ol>
 </li>
 </ol>
@@ -344,46 +346,33 @@
 <li>方法的名称和方法的参数列表唯一决定一个方法。</li>
 <li>method.invoke(对象,参数列表)<ol>
 <li><blockquote>
-<p>A a = new A();<br>Class c = a.getClass();<br>要获取一个方法，首先要获取一个类类型。</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Method method = c.getMethod(“方法名”,形参.class…);<br>用上类类型，通过名称和参数来获取方法（参数以类类型的方式传进去）<br>（…表示不止一个），也可以new Class[]{…}传参数</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Object o = method.invoke(“a”,实参…);</p>
+<p>A a = new A();<br>Class c = a.getClass();</p>
 </blockquote>
 </li>
 </ol>
 </li>
 </ol>
-<ul>
+<p>要获取一个方法，首先要获取一个类类型。</p>
+<pre><code>2. &gt;Method method = c.getMethod(&quot;方法名&quot;,形参.class...);
+</code></pre><p>用上类类型，通过名称和参数来获取方法（参数以类类型的方式传进去）<br><em>（…表示不止一个），也可以new Class[]{…}传参数</em></p>
+<pre><code>3. &gt;Object o = method.invoke(&quot;a&quot;,实参...);
+</code></pre><ul>
 <li>使用invoke反向调用（平时都是a.print()的，现在反过来用了）</li>
 <li>方法如果没有返回值返回null，如果有返回值返回具体值，参数可用数组的方式表示，也可以直接列举，没有参数就不写</li>
 </ul>
-<ol>
-<li>泛型的本质<ul>
+<h3 id="泛型的本质"><a href="#泛型的本质" class="headerlink" title="泛型的本质"></a>泛型的本质</h3><ul>
 <li>反射的操作都是在”编译之后”的操作，编译之后的集合的泛型是去泛型化的——Java中集合的泛型是骗人的。只是为了防止错误输入，只在编译阶段有效。绕过编译就无效了。</li>
 <li>验证：绕过编译，通过方法的反射来操作。 <blockquote>
-<p>ArrayList<string> arr2 = new ArrayList&lt;&gt;();<br>Class c2 = arr2.getClass();<br>Method method = c2.getMethod(“add”, Object.class);<br>method.invoke(arr2, 33);</string></p>
+<p>ArrayList<string> arr2 = new ArrayList&lt;&gt;();<br>  Class c2 = arr2.getClass();<br>  Method method = c2.getMethod(“add”, Object.class);<br>  method.invoke(arr2, 33);</string></p>
 </blockquote>
 </li>
 </ul>
-</li>
-</ol>
 <hr>
 <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="“-”"><a href="#“-”" class="headerlink" title="“\”"></a>“\”</h2><p>其他语言中，\表示“插入一个普通的反斜杠，不要给它任何特殊意义”，而\在java中表示“我要插入一个正则表达式的反斜线，所以其后的字符具有特殊意义”。<br><strong>“2个正则反斜杠等于其他语言中的1个正常反斜杠。”</strong></p>
-<h2 id="一些反斜杠相关的表示方式"><a href="#一些反斜杠相关的表示方式" class="headerlink" title="一些反斜杠相关的表示方式"></a>一些反斜杠相关的表示方式</h2><pre><code>&gt; `\\\\` _普通的反斜线_
-`\\d`表示数字
-`\\D`非数字字符(大写表取非)
-\\w`单词字符
-`\\W`非单词字符 
-`\\s`空白符  
-`\\S`非空白符  
-`\\b`词的边界，放的位置和行边界^$一样，最前或最后  
-`\\B`非词的边界
-</code></pre><h2 id="有特殊含义的保留字符"><a href="#有特殊含义的保留字符" class="headerlink" title="有特殊含义的保留字符"></a>有特殊含义的保留字符</h2><ol>
+<h2 id="一些反斜杠相关的表示方式"><a href="#一些反斜杠相关的表示方式" class="headerlink" title="一些反斜杠相关的表示方式"></a>一些反斜杠相关的表示方式</h2><blockquote>
+<p><code>\\\\</code> <em>普通的反斜线</em><br><code>\\d</code>表示数字<br><code>\\D</code>非数字字符(大写表取非)<br><code>\\w</code>单词字符<br><code>\\W</code>非单词字符<br><code>\\s</code>空白符<br><code>\\S</code>非空白符<br><code>\\b</code>词的边界，放的位置和行边界^$一样，最前或最后<br><code>\\B</code>非词的边界</p>
+</blockquote>
+<h2 id="有特殊含义的保留字符"><a href="#有特殊含义的保留字符" class="headerlink" title="有特殊含义的保留字符"></a>有特殊含义的保留字符</h2><ol>
 <li><p>如果要剥除保留字符的特殊含义，把它当做普通字符看待，要加\，正则表达式的反斜线哟～  </p>
 <blockquote>
 <p><code>?</code> 可能，有或没有{0,1}<br> <code>+</code> ≥1个之前的表达式{1,}<br> <code>*</code>0个或多个{0,}<br> <code>.</code>任意字符<br> <code>.*</code>0个或多个任意字符（十分常用）<br> <code>.+?</code>可能没有字符，可能1个或多个任意字符…</p>
