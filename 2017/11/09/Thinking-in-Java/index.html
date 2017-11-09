@@ -255,8 +255,10 @@
 <li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。</li>
 <li>所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。<a id="more"></a></li>
 <li>package必须是非注释代码的第一行。</li>
-<li>包的停用，如果出现目录中找不到类而它却明明在里面的信息，试着注释掉package语句<h3 id="包的访问符"><a href="#包的访问符" class="headerlink" title="包的访问符"></a>包的访问符</h3>package access = 默认的；只能包package内访问，所谓“包访问”权限<h3 id="继承的儿子能访问的权限"><a href="#继承的儿子能访问的权限" class="headerlink" title="继承的儿子能访问的权限"></a>继承的儿子能访问的权限</h3>protected/public，package access也是可以的，只要在同包</li>
+<li>包的停用，如果出现目录中找不到类而它却明明在里面的信息，试着注释掉package语句</li>
 </ol>
+<h3 id="包的访问符"><a href="#包的访问符" class="headerlink" title="包的访问符"></a>包的访问符</h3><p>package access = 默认的；只能包package内访问，所谓“包访问”权限</p>
+<h3 id="继承的儿子能访问的权限"><a href="#继承的儿子能访问的权限" class="headerlink" title="继承的儿子能访问的权限"></a>继承的儿子能访问的权限</h3><p>protected/public，package access也是可以的，只要在同包</p>
 <ul>
 <li>对于没有直接指明package的，java都看作是default package的目录下的class。因此同一父目录的<br>两个类，class可以创建另外一个不同的class的实例。<h3 id="private"><a href="#private" class="headerlink" title="private"></a>private</h3>只能在自己类中的方法可以用。在多线程中很有用。<h3 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h3>只能给自己的子类用。就是为了联系父子类之间的权限。<h3 id="对于封装"><a href="#对于封装" class="headerlink" title="对于封装"></a>对于封装</h3>使用access control出于两方面原因，一是用接口明确client的边界，能用什么不能用什么，二是为了让接口分离出来，改变内部结构（非public的）不会影响接口（public）的使用。</li>
 </ul>
