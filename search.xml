@@ -131,19 +131,12 @@
 </ul>
 <hr>
 <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="“-”"><a href="#“-”" class="headerlink" title="“\”"></a>“\”</h2><p>其他语言中，\表示“插入一个普通的反斜杠，不要给它任何特殊意义”，而\在java中表示“我要插入一个正则表达式的反斜线，所以其后的字符具有特殊意义”。<br><strong>“2个正则反斜杠等于其他语言中的1个正常反斜杠。”</strong></p>
-<h2 id="一些反斜杠相关的表示方式"><a href="#一些反斜杠相关的表示方式" class="headerlink" title="一些反斜杠相关的表示方式"></a>一些反斜杠相关的表示方式</h2><blockquote>
-<p><code>\\\\</code> <em>普通的反斜线</em><br><code>\\d</code>表示数字<br><code>\\D</code>非数字字符(大写表取非)<br><code>\\w</code>单词字符<br><code>\\W</code>非单词字符<br><code>\\s</code>空白符<br><code>\\S</code>非空白符<br><code>\\b</code>词的边界，放的位置和行边界^$一样，最前或最后<br><code>\\B</code>非词的边界</p>
-</blockquote>
 <h2 id="有特殊含义的保留字符"><a href="#有特殊含义的保留字符" class="headerlink" title="有特殊含义的保留字符"></a>有特殊含义的保留字符</h2><ol>
-<li><p>如果要剥除保留字符的特殊含义，把它当做普通字符看待，要加\，正则表达式的反斜线哟～  </p>
-<blockquote>
-<p><code>?</code> 可能，有或没有{0,1}<br> <code>+</code> ≥1个之前的表达式{1,}<br> <code>*</code>0个或多个{0,}<br> <code>.</code>任意字符<br> <code>.*</code>0个或多个任意字符（十分常用）<br> <code>.+?</code>可能没有字符，可能1个或多个任意字符…</p>
-</blockquote>
+<li><p>一些反斜杠相关的表示方式<br> <code>\\\\</code> <em>普通的反斜线</em><br> <code>\\d</code>表示数字<br> <code>\\D</code>非数字字符(大写表取非)<br> <code>\\w</code>单词字符<br> <code>\\W</code>非单词字符<br> <code>\\s</code>空白符<br> <code>\\S</code>非空白符<br> <code>\\b</code>词的边界，放的位置和行边界^$一样，最前或最后<br> <code>\\B</code>非词的边界</p>
 </li>
-<li><p>边界有关的（注意字符的位置！    ^在字符前，$字符后）：<code>^a</code> a开头，<code>b$</code> b结尾…</p>
-<blockquote>
-<p><code>-?\\d+</code>    “可能有1个负号，后面跟着one plus位数字<br> <code>(-|\\+)?\\d+</code>    “有符号或无符号，后面跟着one plus位数字”</p>
-</blockquote>
+<li><p>如果要剥除保留字符的特殊含义，把它当做普通字符看待，要加\\，正则表达式的反斜线哟～<br> <code>?</code> 可能，有或没有{0,1}<br> <code>+</code> ≥1个之前的表达式{1,}<br> <code>*</code>0个或多个{0,}<br> <code>.</code>任意字符<br> <code>.*</code>0个或多个任意字符（十分常用）<br> <code>.+?</code>可能没有字符，可能1个或多个任意字符…</p>
+</li>
+<li><p>边界有关的（注意字符的位置！    ^在字符前，$字符后）：<code>^a</code> a开头，<code>b$</code> b结尾…<br> <code>-?\\d+</code>    “可能有1个负号，后面跟着one plus位数字<br> <code>(-|\\+)?\\d+</code>    “有符号或无符号，后面跟着one plus位数字”</p>
 </li>
 </ol>
 <h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><p><em>贪婪、勉强(贪婪的加上?)、占有(只java可用，贪婪的加上+)</em></p>
