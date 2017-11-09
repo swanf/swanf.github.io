@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[Thinking in Java]]></title>
       <url>/2017/11/09/Thinking-in-Java/</url>
-      <content type="html"><![CDATA[<p><img src="assets/tij.jpg" alt="thinking-in-java4"></p>
+      <content type="html"><![CDATA[<p><img src="/assets/tij.jpg" alt="thinking-in-java4"></p>
 <hr>
 <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ul>
 <li>策略process</li>
@@ -143,25 +143,15 @@
 </ul>
 </li>
 </ul>
-<ol>
-<li><p>有特殊含义的保留字符：</p>
-<ul>
-<li><p>如果要剥除保留字符的特殊含义，把它当做普通字符看待，要加\，正则表达式的反斜线哟～</p>
-<blockquote>
-<p><code>?</code> 可能，有或没有{0,1}…<code>+</code> ≥1个之前的表达式{1,}…<code>*</code>0个或多个{0,}…<code>.</code>任意字符…<br><code>.*</code>0个或多个任意字符（十分常用）…<code>.+?</code>可能没有字符，可能1个或多个任意字符…</p>
-</blockquote>
-</li>
-<li><p>边界有关的（注意字符的位置！    ^在字符前，$字符后）：<code>^a</code> a开头，<code>b$</code> b结尾…</p>
-<blockquote>
-<p><code>-?\\d+</code>    “可能有1个负号，后面跟着one plus位数字<br><br><code>(-|\\+)?\\d+</code>    “有符号或无符号，后面跟着one plus位数字”</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>量词</p>
-</li>
-</ol>
-<ul>
+<h3 id="有特殊含义的保留字符"><a href="#有特殊含义的保留字符" class="headerlink" title="有特殊含义的保留字符"></a>有特殊含义的保留字符</h3><pre><code>- 如果要剥除保留字符的特殊含义，把它当做普通字符看待，要加\\，正则表达式的反斜线哟～
+&gt; `?` 可能，有或没有{0,1}...`+` ≥1个之前的表达式{1,}...`*`0个或多个{0,}...`.`任意字符...
+`.*`0个或多个任意字符（十分常用）...`.+?`可能没有字符，可能1个或多个任意字符...
+
+- 边界有关的（注意字符的位置！    ^在字符前，$字符后）：`^a` a开头，`b$` b结尾...
+
+&gt;`-?\\d+`    “可能有1个负号，后面跟着one plus位数字&lt;br/&gt;
+`(-|\\+)?\\d+`    “有符号或无符号，后面跟着one plus位数字”
+</code></pre><h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><ul>
 <li><p><em>贪婪、勉强(贪婪的加上?)、占有(只java可用，贪婪的加上+)</em></p>
 <ol>
 <li><p>贪婪型：最大匹配。    X?、X*、X+、X{n}</p>
@@ -187,65 +177,45 @@
 </ol>
 </li>
 </ul>
-<ol>
-<li><p>String类的相关方法</p>
-<ul>
-<li><code>&quot;待检测字符串&quot;.matches(&quot;正则表达式&quot;);</code>    boolean，可用于判断是否满足表达式   </li>
-<li><code>&quot;待切分字符串&quot;.split(&quot;正则表达式&quot;);</code>    String[]，可用于将长字符串按特定的regex切分</li>
-<li><code>&quot;待取代字符串&quot;.replaceFirst(&quot;正则表达式&quot;,&quot;转换成什么&quot;);</code> String，用于替换字符</li>
-<li><em>如果不是只是用一次的话，非String对象的正则表达式具有更佳的性能。</em></li>
-</ul>
-</li>
-<li><p>正则表达式对象</p>
-<ul>
-<li><p>Pattern表示编译后的正则表达式，Matcher可以用来调用各种不同的方法来分析具体的匹配情况</p>
-<blockquote>
-<p>Pattern p = Pattern.compile(“regex”);<br><br>Matcher m = p.matcher(“待检测字符串”);</p>
-</blockquote>
-</li>
-<li><p>Pattern和Metcher具体方法：</p>
-<ul>
-<li><code>p.split(CharSequence s, int limit)</code>    以p作为分割表达式，返回一个String[]，并且这个字符串数组的length不能大于limit</li>
-<li><code>p.matcher(String)</code>    返回一个Matcher对象。</li>
-<li><code>p.flag()</code>    返回模式标记值。</li>
-<li><code>m.matches(String)</code>    判断是否匹配</li>
-<li><code>m.lookingAt()</code>    刚开始那第一部分能否匹配，boolean。</li>
-<li><code>m.find()</code>    可在CharSequence中找多个匹配，返回是否匹配，boolean。</li>
-<li>`！无论用lookingAt还是find，进行过一次查找后，都将自动进入下一条匹配信息。</li>
-<li><code>m.group()</code>    返回前一次匹配操作的整个匹配（第0组group），已匹配部分。</li>
-<li><code>find()</code>可以在输入的”任意位置”定位正则表达式，而matches/lookingAt只有在正则从头开始匹配才可能成功。</li>
-</ul>
-</li>
-<li><p>组groups是用括号划分的正则表达式，可以根据组的编号来引用某个组。<br></p>
-<ul>
-<li><code>(A)((B)(C))</code>中，0组是ABC，1组是A和BC，2组是B和C。</li>
-<li><code>matcher.group()</code>可以返回前一次匹配的操作，加上0,1,2可以得到不同的组的输出</li>
-<li><code>(?m)</code>表示模式标记，能够显示告诉正则表达式注意输入序列中的换行符</li>
-</ul>
-</li>
-<li><p>Pattern模式标记：</p>
-<ul>
-<li>标记参数：int flag，可作为<code>Pattern.compile(,)</code>的第二项参数，也可以并入正则表达式</li>
-<li><code>Pattern.CASE_INSENSITIVE(?i)</code>    忽略大小写</li>
-<li><code>Pattern.MULTILINE(?m)</code>        将字符串中换行符看做一行的末尾</li>
-<li><code>Pattern.COMMENTS(?x)</code>        忽略空格、#注释</li>
-<li><code>Pattern.DOTALL(?s)</code>        表达式”.”匹配所有的字符，包括行终结符$（默认不匹配）</li>
-<li>使用时直接将标记加到正则表达式中，如<code>(?i)l.*?e</code>，表示想要l开头e结尾的单词，且不分大小写</li>
-<li>还可以用多个模式标记，中间用”|”隔开，如：<code>Pattern.compile(&quot;l.*?e&quot; , Pattern.CASE_INSENSITIVE|Pattern.MULTILINE)</code>;<br>或者写在正则里面：<code>(?i)(?m)l.*?e</code>，后面不加模式标记参数。</li>
-</ul>
-</li>
-<li><p>替换操作</p>
-<ul>
-<li><code>str.replaceFirst(String)</code>    替换掉第一个匹配成功的部分</li>
-<li><code>str.replaceAll(String)</code>    替换掉所有匹配成功的部分</li>
-<li><code>m.appendReplacement(StringBuffer,String)</code>    先将当前匹配子串（当前的m匹配成功）替换为指定字符串（第二个参数），并且将替换后的子串以及其之前到上次匹配子串之后的字符串段添加到一个StringBuffer对象里</li>
-<li><code>m.appendTail(StringBuffer)</code> 方法则将最后一次匹配工作后剩余的字符串添加到一个StringBuffer对象里</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
+<h3 id="String类的相关方法"><a href="#String类的相关方法" class="headerlink" title="String类的相关方法"></a>String类的相关方法</h3><pre><code>- `&quot;待检测字符串&quot;.matches(&quot;正则表达式&quot;);`    boolean，可用于判断是否满足表达式   
+- `&quot;待切分字符串&quot;.split(&quot;正则表达式&quot;);`    String[]，可用于将长字符串按特定的regex切分
+- `&quot;待取代字符串&quot;.replaceFirst(&quot;正则表达式&quot;,&quot;转换成什么&quot;);` String，用于替换字符
+- _如果不是只是用一次的话，非String对象的正则表达式具有更佳的性能。_
+</code></pre><h3 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h3><p>Pattern表示编译后的正则表达式，Matcher可以用来调用各种不同的方法来分析具体的匹配情况</p>
+<pre><code>&gt;Pattern p = Pattern.compile(&quot;regex&quot;);&lt;br/&gt;
+Matcher m = p.matcher(&quot;待检测字符串&quot;);
+
+- Pattern和Metcher具体方法：
+    - `p.split(CharSequence s, int limit)`    以p作为分割表达式，返回一个String[]，并且这个字符串数组的length不能大于limit
+    - `p.matcher(String)`    返回一个Matcher对象。
+    - `p.flag()`    返回模式标记值。
+    - `m.matches(String)`    判断是否匹配
+    - `m.lookingAt()`    刚开始那第一部分能否匹配，boolean。
+    - `m.find()`    可在CharSequence中找多个匹配，返回是否匹配，boolean。
+    - `！无论用lookingAt还是find，进行过一次查找后，都将自动进入下一条匹配信息。
+    - `m.group()`    返回前一次匹配操作的整个匹配（第0组group），已匹配部分。
+    - `find()`可以在输入的&quot;任意位置&quot;定位正则表达式，而matches/lookingAt只有在正则从头开始匹配才可能成功。
+
+- 组groups是用括号划分的正则表达式，可以根据组的编号来引用某个组。&lt;br/&gt;
+    - `(A)((B)(C))`中，0组是ABC，1组是A和BC，2组是B和C。
+    - `matcher.group()`可以返回前一次匹配的操作，加上0,1,2可以得到不同的组的输出
+    - `(?m)`表示模式标记，能够显示告诉正则表达式注意输入序列中的换行符
+
+- Pattern模式标记：
+    - 标记参数：int flag，可作为`Pattern.compile(,)`的第二项参数，也可以并入正则表达式
+    - `Pattern.CASE_INSENSITIVE(?i)`    忽略大小写
+    - `Pattern.MULTILINE(?m)`        将字符串中换行符看做一行的末尾
+    - `Pattern.COMMENTS(?x)`        忽略空格、#注释
+    - `Pattern.DOTALL(?s)`        表达式&quot;.&quot;匹配所有的字符，包括行终结符$（默认不匹配）
+    - 使用时直接将标记加到正则表达式中，如`(?i)l.*?e`，表示想要l开头e结尾的单词，且不分大小写
+    - 还可以用多个模式标记，中间用&quot;|&quot;隔开，如：`Pattern.compile(&quot;l.*?e&quot; , Pattern.CASE_INSENSITIVE|Pattern.MULTILINE)`; 
+</code></pre><p>或者写在正则里面：<code>(?i)(?m)l.*?e</code>，后面不加模式标记参数。</p>
+<pre><code>- 替换操作
+    - `str.replaceFirst(String)`    替换掉第一个匹配成功的部分
+    - `str.replaceAll(String)`    替换掉所有匹配成功的部分
+    - `m.appendReplacement(StringBuffer,String)`    先将当前匹配子串（当前的m匹配成功）替换为指定字符串（第二个参数），并且将替换后的子串以及其之前到上次匹配子串之后的字符串段添加到一个StringBuffer对象里
+    - `m.appendTail(StringBuffer)` 方法则将最后一次匹配工作后剩余的字符串添加到一个StringBuffer对象里
+</code></pre><hr>
 <h1 id="“IO流”"><a href="#“IO流”" class="headerlink" title="“IO流”"></a>“IO流”</h1><ol>
 <li><p>File类<br> <br><em>更适合叫“FilePath”</em></p>
 <ul>
