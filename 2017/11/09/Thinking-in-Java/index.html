@@ -474,7 +474,7 @@
 <li>因此accept会对names逐一使用，看看是否匹配。</li>
 <li>注：FilenameFilter可作为匿名内部类用，但传入的参数必须是final的，这样才能在内部类中使用。</li>
 </ul>
-<h2 id="（输入输出）流"><a href="#（输入输出）流" class="headerlink" title="（输入输出）流"></a>（输入输出）流</h2><p><br><em>流 = 任何有能力（产出/接受）数据的（数据源/接收端）对象</em></p>
+<h2 id="输入-输出流"><a href="#输入-输出流" class="headerlink" title="输入/输出流"></a>输入/输出流</h2><p><br><em>流 = 任何有能力（产出/接受）数据的（数据源/接收端）对象</em></p>
 <ol>
 <li>InputStream/Reader派生（输入）：都有read方法，用于读取单个字节/字节数组</li>
 <li>OutputStream/Writer派生（输出）：都有write方法，用于写单个字节/字节数组</li>
@@ -548,7 +548,7 @@
 <ul>
 <li>注意，out和err都是被包装成PrintStream的。但是System.in是一个未经加工的InputStream，需要被包装成BufferedReader来使用。</li>
 </ul>
-<h3 id="nio"><a href="#nio" class="headerlink" title="nio"></a>nio</h3><p><br><em>使用了通道Channel和缓冲器ByteBuffer，使得I/O速度提高</em></p>
+<h2 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h2><p><br><em>使用了通道Channel和缓冲器ByteBuffer，使得I/O速度提高</em></p>
 <ul>
 <li>FileChannel 可以向它传送用于文件读写的ByteBuffer，并且可以锁定文件的某些区域用于独占式访问。</li>
 <li><p>得到管道和缓冲器的一般用法（都不能直接new，需要间接获取）：</p>
@@ -563,13 +563,13 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="转换数据"><a href="#转换数据" class="headerlink" title="转换数据"></a>转换数据</h4><p><br><em>缓冲器容纳的是普通的字节，为了把他们转换成字符，要么在输入时进行”编码”，要么在其从缓冲器输出时对其”解码”。(可以使用java.nio.charset.Charset实现。)</em></p>
+<h3 id="转换数据"><a href="#转换数据" class="headerlink" title="转换数据"></a>转换数据</h3><p><br><em>缓冲器容纳的是普通的字节，为了把他们转换成字符，要么在输入时进行”编码”，要么在其从缓冲器输出时对其”解码”。(可以使用java.nio.charset.Charset实现。)</em></p>
 <pre><code>1. 通过打印时解码   `Charset.forName(&quot;编码方式&quot;).decode(&quot;缓冲器&quot;)`
 2. 通过输出到文件时字符串的.getBytes编码    `fc.write(buffer.wrap(&quot;text&quot;.getBytes(&quot;UTF-16BE&quot;)));`
 3. 利用当成CharBuffer写入和取出(view bufer) 
 `buffer.asCharBuffer().put(&quot;text&quot;);`&lt;br/&gt;
 `System.out.println(buffer.asCharBuffer());`
-</code></pre><h4 id="视图缓冲器view-buffer"><a href="#视图缓冲器view-buffer" class="headerlink" title="视图缓冲器view buffer"></a>视图缓冲器view buffer</h4><p><br><em>让ByteBuffer包装成其他特定数据类型，实际上底层还是ByteBuffer存储的。</em></p>
+</code></pre><h3 id="视图缓冲器view-buffer"><a href="#视图缓冲器view-buffer" class="headerlink" title="视图缓冲器view buffer"></a>视图缓冲器view buffer</h3><p><br><em>让ByteBuffer包装成其他特定数据类型，实际上底层还是ByteBuffer存储的。</em></p>
 <ol>
 <li><p>基本数据类型：</p>
 <ul>
@@ -588,20 +588,20 @@
 </li>
 <li><p>内存映射文件mapping：<br><br><em>将太大放不进内存的文件可以当做整个文件都在内存中，看做一个非常大的数组。</em></p>
 <ul>
-<li>得到一个缓冲器：<br>  <br><code>MappedByteBuffer out = fc.map(FileChannel.MapMode.Read_ONLY, 0, fc.size());</code><br>  <br>先得到通道，决定读写，然后指定映射文件的初始位置和映射区域长度</li>
+<li>得到一个缓冲器：<br>  <code>MappedByteBuffer out = fc.map(FileChannel.MapMode.Read_ONLY, 0, fc.size());</code><br>  先得到通道，决定读写，然后指定映射文件的初始位置和映射区域长度</li>
 <li>映射的write必须要用RandomAccessFile来输出！</li>
 </ul>
 </li>
 </ol>
-<h4 id="文件加锁"><a href="#文件加锁" class="headerlink" title="文件加锁"></a>文件加锁</h4><p><br><em>允许我们同步访问某个作为共享资源的文件；</em></p>
-<pre><code>- 文件锁对于其他操作系统进程是可见的，因为java文件加锁直接映射到了本地操作系统的加锁工具。
-- 通过对FileChannel调用tryLock()_非阻塞式_或lock()_阻塞式_就可以得到整个文件的FileLock。
-- 对于SocketChannel、DatagramChannel和ServerSocketChannel不需要加锁，因为他们是从单进程实体继承过来的。
-- 查询锁的类型：FileLock.isShared()
-</code></pre><ul>
-<li>对映射文件的加锁：<br>  文件映射通常用于极大的文件，如数据库，我们可以对它部分加锁，以便多个用户访问它。</li>
-</ul>
-<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p><em>压缩类库需要按字节方式处理。有时要使用两种类型的数据流，可以通过适配器类进行转换</em></p>
+<h3 id="文件加锁"><a href="#文件加锁" class="headerlink" title="文件加锁"></a>文件加锁</h3><p><em>允许我们同步访问某个作为共享资源的文件；</em></p>
+<ol>
+<li>文件锁对于其他操作系统进程是可见的，因为java文件加锁直接映射到了本地操作系统的加锁工具。</li>
+<li>通过对FileChannel调用tryLock()<em>非阻塞式</em>或lock()<em>阻塞式</em>就可以得到整个文件的FileLock。</li>
+<li>对于SocketChannel、DatagramChannel和ServerSocketChannel不需要加锁，因为他们是从单进程实体继承过来的。</li>
+<li>查询锁的类型：FileLock.isShared()</li>
+<li>对映射文件的加锁：<br> 文件映射通常用于极大的文件，如数据库，我们可以对它部分加锁，以便多个用户访问它。</li>
+</ol>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p><em>压缩类库需要按字节方式处理。有时要使用两种类型的数据流，可以通过适配器类进行转换</em></p>
 <ol>
 <li>DeflaterOutputStream 压缩类的基类</li>
 <li>InflaterInputStream 解压缩类的基类<ul>
