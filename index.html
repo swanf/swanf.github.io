@@ -244,15 +244,16 @@
             
                 
                     <p><img src="assets/tij.jpg" alt="thinking-in-java4"></p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ul>
 <li>策略process</li>
 <li>装饰器decorator</li>
 </ul>
-<h2 id="ACCESS-CONTROL"><a href="#ACCESS-CONTROL" class="headerlink" title="ACCESS CONTROL"></a>ACCESS CONTROL</h2><ul>
-<li>——实际上关注的是client和library creator之间的一种沟通communication</li>
+<h1 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h1><h3 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h3><p>访问控制具体关注的是client和library creator之间的一种沟通communication</p>
+<ol>
 <li>一个java文件里面只能有一个public的class</li>
 <li>.java文件编译之后后缀变成了.class，这就是一个可以工作的程序了。可以通过jar archiver打包变成<br>JAR执行。和普通文件编译直接变成可执行文件或库library不一样。</li>
-<li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。
+<li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。</li>
+<li>所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。
                     
             
         
@@ -410,11 +411,11 @@ $(document).ready(function(){
     </div>
     <script>
     var GREETING = {
-        morning: "当我们探索时，就要发现到真理",
-        noon: "人的天职在于勇于探索真理。",
-        after: "一件事实是一条没有性别的真理",
-        night: "真理有时可能变得黯淡，但它永远不会熄灭",
-        midnight: "真理在人那里获得生命力，并且展现出来"
+        morning: "充满电，开始探索世界。",
+        noon: "不疾不徐，阳光给与你能量。",
+        after: "慢慢地，你要学会做自己的太阳。",
+        night: "后来，夜也因你而透亮。",
+        midnight: "在夜里，你也活得如同白昼。"
     }
     $(document).ready(function(){
         Nlvi.search();

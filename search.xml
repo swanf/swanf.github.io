@@ -6,36 +6,30 @@
       <title><![CDATA[Thinking in Java]]></title>
       <url>/2017/11/09/Thinking-in-Java/</url>
       <content type="html"><![CDATA[<p><img src="assets/tij.jpg" alt="thinking-in-java4"></p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ul>
 <li>策略process</li>
 <li>装饰器decorator</li>
 </ul>
-<h2 id="ACCESS-CONTROL"><a href="#ACCESS-CONTROL" class="headerlink" title="ACCESS CONTROL"></a>ACCESS CONTROL</h2><ul>
-<li>——实际上关注的是client和library creator之间的一种沟通communication</li>
+<h1 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h1><h3 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h3><p>访问控制具体关注的是client和library creator之间的一种沟通communication</p>
+<ol>
 <li>一个java文件里面只能有一个public的class</li>
 <li>.java文件编译之后后缀变成了.class，这就是一个可以工作的程序了。可以通过jar archiver打包变成<br>JAR执行。和普通文件编译直接变成可执行文件或库library不一样。</li>
-<li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。<a id="more"></a></li>
+<li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。</li>
+<li>所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。<a id="more"></a></li>
 <li>package必须是非注释代码的第一行。</li>
-<li>包的停用，如果出现目录中找不到类而它却明明在里面的信息，试着注释掉package语句<h4 id="包的访问符"><a href="#包的访问符" class="headerlink" title="包的访问符"></a>包的访问符</h4>package access = 默认的；只能包package内访问，所谓“包访问”权限<h4 id="继承的儿子能访问的权限"><a href="#继承的儿子能访问的权限" class="headerlink" title="继承的儿子能访问的权限"></a>继承的儿子能访问的权限</h4>protected/public，package access也是可以的，只要在同包</li>
-<li>对于没有直接指明package的，java都看作是default package的目录下的class。因此同一父目录的<br>两个类，class可以创建另外一个不同的class的实例。<h4 id="private"><a href="#private" class="headerlink" title="private"></a>private</h4>只能在自己类中的方法可以用。在多线程中很有用。<h4 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h4>只能给自己的子类用。就是为了联系父子类之间的权限。<h4 id="对于封装"><a href="#对于封装" class="headerlink" title="对于封装"></a>对于封装</h4>使用access control出于两方面原因，一是用接口明确client的边界，能用什么不能用什么，二是为了让接口分离出来，改变内部结构（非public的）不会影响接口（public）的使用。</li>
+<li>包的停用，如果出现目录中找不到类而它却明明在里面的信息，试着注释掉package语句<h3 id="包的访问符"><a href="#包的访问符" class="headerlink" title="包的访问符"></a>包的访问符</h3>package access = 默认的；只能包package内访问，所谓“包访问”权限<h3 id="继承的儿子能访问的权限"><a href="#继承的儿子能访问的权限" class="headerlink" title="继承的儿子能访问的权限"></a>继承的儿子能访问的权限</h3>protected/public，package access也是可以的，只要在同包</li>
+</ol>
+<ul>
+<li>对于没有直接指明package的，java都看作是default package的目录下的class。因此同一父目录的<br>两个类，class可以创建另外一个不同的class的实例。<h3 id="private"><a href="#private" class="headerlink" title="private"></a>private</h3>只能在自己类中的方法可以用。在多线程中很有用。<h3 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h3>只能给自己的子类用。就是为了联系父子类之间的权限。<h3 id="对于封装"><a href="#对于封装" class="headerlink" title="对于封装"></a>对于封装</h3>使用access control出于两方面原因，一是用接口明确client的边界，能用什么不能用什么，二是为了让接口分离出来，改变内部结构（非public的）不会影响接口（public）的使用。</li>
 </ul>
-<h2 id="REUSING-CLASSES"><a href="#REUSING-CLASSES" class="headerlink" title="REUSING CLASSES"></a>REUSING CLASSES</h2><ul>
-<li>——类的重用，包括类中创建它类实例（composition）和新建类作为旧类的一个“类型”（inheritance）</li>
-<li>Object1 + “String”：由于只有String对象才能够加上String，那么这里将会自动调用我们Object1的toString()方法。即使对于primitive类型也是生效的。</li>
-<li>多重继承，子类将会自动调用父类的构造函数，也就是说，形成子类是一个“从外到里”的初始化过程——先生成最外层的父类，按照继承关系从大到小生成实例，直到这个子类的构造函数。</li>
-<li>父类中没有无参构造函数，那么子类中的默认构造无参函数就不会存在，因为子类中的默认无参函数会默认调用父类中无参再调用子类中的无参——所谓的“从外到里”初始化过程。</li>
-<li>一个介乎composition和inheritance的用法：代表团delegation。具体作用有点类似实现一个接口。但是它并不需要关键字，只需要在新类创建一个旧类的实例，用“.”访问这个实例里面的各种方法。这种的话在调用库的时候还蛮常见的，例如Math.abs()。<br>～注：delegate可以通过IDEA的generate自动生成。</li>
-<li>清除工作是指将非内存的东西恢复回对象存在之前的景象。</li>
-<li>一般情况下，cleanup工作交给GC(Garbage Collector)去做，但如果必须自己明确清除，就必须知道垃圾收集的顺序、自己的清除方法（不要依赖finalize()）。</li>
-<li>在想要利用新类的特性而不用新类的接口时，用合成composition。想创建一个已存在的类的特殊版本时，用继承inherit。</li>
-<li>总之，符合has-a用合成，符合is-a用继承。（通常问自己一个问题就心中有数了，Do I need to upcast? 是的话，就用继承！）</li>
-<li>分析问题的时候可以直接用public关键字（这样就可以直接用<code>.</code>调用类中的方法，显得更加清晰易懂），但这只是特殊情况，一般来说你应该用private的。——这种情况下，protected就有用了（它同时也包含了package access的范畴）。</li>
-<li>final关键字：this cannot be changed。For 2 reasons: design or efficiency</li>
-<li>static final能说明这个primitive是一个compile-time值，它不会随着时间的改变而变化。在内存中一直占据同一个位置。而只有final只是说明它是一个不能够被重新赋值的值，但是每次new它所在类的时候都会被重新初始化（加了static只能被初始化一次）。</li>
-<li>final可以加在方法的参数里，说明这个参数只能被读取，不能被更改。</li>
-<li>以前的 Vector 和 Hashtable 被现代java的 ArrayList 和 HashMap 替代啦～</li>
+<h1 id="类的重用"><a href="#类的重用" class="headerlink" title="类的重用"></a>类的重用</h1><p>包括类中创建它类实例（composition）和新建类作为旧类的一个“类型”（inheritance）</p>
+<ul>
+<li>Object1 + “String”：由于只有String对象才能够加上String，那么这里将会自动调用我们Object1的toString()方法。即使对于primitive类型也是生效的。<h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3>子类将会自动调用父类的构造函数，也就是说，形成子类是一个“从外到里”的初始化过程——先生成最外层的父类，按照继承关系从大到小生成实例，直到这个子类的构造函数。<h3 id="父类中没有无参构造函数"><a href="#父类中没有无参构造函数" class="headerlink" title="父类中没有无参构造函数"></a>父类中没有无参构造函数</h3>那么子类中的默认构造无参函数就不会存在，因为子类中的默认无参函数会默认调用父类中无参再调用子类中的无参——所谓的“从外到里”初始化过程。<h3 id="代表"><a href="#代表" class="headerlink" title="代表"></a>代表</h3>一个介乎composition和inheritance的用法：代表团delegation。具体作用有点类似实现一个接口。但是它并不需要关键字，只需要在新类创建一个旧类的实例，用“.”访问这个实例里面的各种方法。这种的话在调用库的时候还蛮常见的，例如Math.abs()。</li>
+<li>注：delegate可以通过IDEA的generate自动生成。<h3 id="清除工作"><a href="#清除工作" class="headerlink" title="清除工作"></a>清除工作</h3>是指将非内存的东西恢复回对象存在之前的景象。</li>
+<li>一般情况下，cleanup工作交给GC(Garbage Collector)去做，但如果必须自己明确清除，就必须知道垃圾收集的顺序、自己的清除方法（不要依赖finalize()）。<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3>在想要利用新类的特性而不用新类的接口时，用合成composition。想创建一个已存在的类的特殊版本时，用继承inherit。<h3 id="总之"><a href="#总之" class="headerlink" title="总之"></a>总之</h3>符合has-a用合成，符合is-a用继承。（通常问自己一个问题就心中有数了，Do I need to upcast? 是的话，就用继承！）<h3 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h3>可以直接用public关键字（这样就可以直接用<code>.</code>调用类中的方法，显得更加清晰易懂），但这只是特殊情况，一般来说你应该用private的。——这种情况下，protected就有用了（它同时也包含了package access的范畴）。<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3>不能够被改变。&gt; this cannot be changed。For 2 reasons: design or efficiency</li>
+<li>final可以加在方法的参数里，说明这个参数只能被读取，不能被更改。<h3 id="static-final"><a href="#static-final" class="headerlink" title="static final"></a>static final</h3>能说明这个primitive是一个compile-time值，它不会随着时间的改变而变化。在内存中一直占据同一个位置。而只有final只是说明它是一个不能够被重新赋值的值，但是每次new它所在类的时候都会被重新初始化（加了static只能被初始化一次）。<h3 id="以前的"><a href="#以前的" class="headerlink" title="以前的"></a>以前的</h3>Vector 和 Hashtable 被现代java的 ArrayList 和 HashMap 替代啦～</li>
 </ul>
-<h2 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h2><h2 id="“反射”"><a href="#“反射”" class="headerlink" title="“反射”"></a>“反射”</h2><ol>
+<h1 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h1><h1 id="“反射”"><a href="#“反射”" class="headerlink" title="“反射”"></a>“反射”</h1><ol>
 <li>Java里面，万事万物皆对象，所以说，类也是一个对象，它是java.util.Class的实例对象</li>
 <li>实例对象的表示，有三种方法：<blockquote>
 <p>myClass c = new myClass(); <em>c是myClass的实例对象</em><br></p>
