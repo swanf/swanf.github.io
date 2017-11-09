@@ -18,9 +18,10 @@
 <li>正则表达式</li>
 <li>I/O</li>
 <li>注解（只写了一点点）</li>
-<li>并发（涉及了同步队列和构件）  <a id="more"></a>
-(内容很混乱，都是当时看书时用md随手做的的笔记)</li>
+<li>并发（涉及了同步队列和构件）  <a id="more"></a>  
+</li>
 </ol>
+<p>(内容很混乱，都是当时看书时用md随手做的的笔记orz)</p>
 <hr>
 <h1 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h1><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><p>访问控制具体关注的是client和library creator之间的一种沟通communication</p>
 <ol>
