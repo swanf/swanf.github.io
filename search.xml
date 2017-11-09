@@ -12,11 +12,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-ACCESS-CONTROL"><a href="#5-ACCESS-CONTROL" class="headerlink" title="5. ACCESS CONTROL"></a>5. ACCESS CONTROL</h2><ul>
+<h2 id="ACCESS-CONTROL"><a href="#ACCESS-CONTROL" class="headerlink" title="ACCESS CONTROL"></a>ACCESS CONTROL</h2><ul>
 <li>——实际上关注的是client和library creator之间的一种沟通communication</li>
 <li>一个java文件里面只能有一个public的class</li>
 <li>.java文件编译之后后缀变成了.class，这就是一个可以工作的程序了。可以通过jar archiver打包变成<br>JAR执行。和普通文件编译直接变成可执行文件或库library不一样。</li>
-<li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。<!-- --></li>
+<li>这些乱七八糟的.java和.class通过package关键字笼络在一起，就像是一把伞把他们裹起<br>来了。所谓import其实就相当于将一个package引进来了。这两个关键字作用都是为了防止撞名name<br>clashing。<a id="more"></a></li>
 <li>package必须是非注释代码的第一行。</li>
 <li>包的停用，如果出现目录中找不到类而它却明明在里面的信息，试着注释掉package语句</li>
 <li>java的访问符：package access = 默认的；只能包package内访问，所谓“包访问”权限</li>
@@ -26,7 +26,7 @@
 <li>protected：只能给自己的子类用。就是为了联系父子类之间的权限。</li>
 <li>对于封装，使用access control出于两方面原因，一是用接口明确client的边界，能用什么不能用什么，<br>二是为了让接口分离出来，改变内部结构（非public的）不会影响接口（public）的使用。</li>
 </ul>
-<h2 id="6-REUSING-CLASSES"><a href="#6-REUSING-CLASSES" class="headerlink" title="6. REUSING CLASSES"></a>6. REUSING CLASSES</h2><ul>
+<h2 id="REUSING-CLASSES"><a href="#REUSING-CLASSES" class="headerlink" title="REUSING CLASSES"></a>REUSING CLASSES</h2><ul>
 <li>——类的重用，包括类中创建它类实例（composition）和新建类作为旧类的一个“类型”（inheritance）</li>
 <li>Object1 + “String”：由于只有String对象才能够加上String，那么这里将会自动调用我们Object1的toString()方法。即使对于primitive类型也是生效的。</li>
 <li>多重继承，子类将会自动调用父类的构造函数，也就是说，形成子类是一个“从外到里”的初始化过程——先生成最外层的父类，按照继承关系从大到小生成实例，直到这个子类的构造函数。</li>
@@ -42,7 +42,7 @@
 <li>final可以加在方法的参数里，说明这个参数只能被读取，不能被更改。</li>
 <li>以前的 Vector 和 Hashtable 被现代java的 ArrayList 和 HashMap 替代啦～</li>
 </ul>
-<h2 id="7-类型信息"><a href="#7-类型信息" class="headerlink" title="7. 类型信息"></a>7. 类型信息</h2><h2 id="“反射”"><a href="#“反射”" class="headerlink" title="“反射”"></a>“反射”</h2><ol>
+<h2 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h2><h2 id="“反射”"><a href="#“反射”" class="headerlink" title="“反射”"></a>“反射”</h2><ol>
 <li>Java里面，万事万物皆对象，所以说，类也是一个对象，它是java.util.Class的实例对象</li>
 <li>实例对象的表示，有三种方法：<blockquote>
 <p>myClass c = new myClass(); <em>c是myClass的实例对象</em><br></p>
@@ -643,6 +643,12 @@
 </ul>
 ]]></content>
       
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
         
     </entry>
     
