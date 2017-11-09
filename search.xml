@@ -3,13 +3,23 @@
   
     
     <entry>
-      <title><![CDATA[Thinking in Java]]></title>
+      <title><![CDATA[Thinking in Java notes]]></title>
       <url>/2017/11/09/Thinking-in-Java/</url>
       <content type="html"><![CDATA[<!--只使用1~3个#号作标题-->
 <p><img src="/assets/tij.jpg" alt="thinking-in-java4"></p>
 <!-- 设计模式 -->
 <!-- - 策略process -->
 <!-- - 装饰器decorator -->
+<p>内容很混乱，都是当时看书时用md随手做的的笔记。<br>目录</p>
+<ol>
+<li>访问控制</li>
+<li>类的重用</li>
+<li>反射</li>
+<li>正则表达式</li>
+<li>I/O</li>
+<li>注解（只写了一点点）</li>
+<li>并发（涉及了同步队列和构件）</li>
+</ol>
 <hr>
 <h1 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h1><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><p>访问控制具体关注的是client和library creator之间的一种沟通communication</p>
 <ol>
