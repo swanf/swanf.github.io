@@ -244,10 +244,12 @@
         <div class="post-content syuanpi riseIn-light back-3">
             
                 <p><img src="assets/tij.jpg" alt="thinking-in-java4"></p>
+<hr>
 <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ul>
 <li>策略process</li>
 <li>装饰器decorator</li>
 </ul>
+<hr>
 <h1 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h1><h2 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h2><p>访问控制具体关注的是client和library creator之间的一种沟通communication</p>
 <ol>
 <li>一个java文件里面只能有一个public的class</li>
@@ -288,7 +290,9 @@
 </ul>
 <h2 id="static-final"><a href="#static-final" class="headerlink" title="static final"></a>static final</h2><p>能说明这个primitive是一个compile-time值，它不会随着时间的改变而变化。在内存中一直占据同一个位置。而只有final只是说明它是一个不能够被重新赋值的值，但是每次new它所在类的时候都会被重新初始化（加了static只能被初始化一次）。</p>
 <h2 id="以前的"><a href="#以前的" class="headerlink" title="以前的"></a>以前的</h2><p>Vector 和 Hashtable 被现代java的 ArrayList 和 HashMap 替代啦～</p>
-<h1 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h1><h1 id="“反射”"><a href="#“反射”" class="headerlink" title="“反射”"></a>“反射”</h1><h2 id="万事万物皆对象"><a href="#万事万物皆对象" class="headerlink" title="万事万物皆对象"></a>万事万物皆对象</h2><p>所以说，类也是一个对象，它是java.util.Class的实例对象</p>
+<hr>
+<h1 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h1><hr>
+<h1 id="“反射”"><a href="#“反射”" class="headerlink" title="“反射”"></a>“反射”</h1><h2 id="万事万物皆对象"><a href="#万事万物皆对象" class="headerlink" title="万事万物皆对象"></a>万事万物皆对象</h2><p>所以说，类也是一个对象，它是java.util.Class的实例对象</p>
 <h2 id="实例对象的表示"><a href="#实例对象的表示" class="headerlink" title="实例对象的表示"></a>实例对象的表示</h2><p>有三种方法：<br><code>myClass c = new myClass();</code> <em>c是myClass的实例对象</em><br>1.<code>Class c1 = myClass.class;</code> <em>c1、c2是Class类的实例对象，是myClass类的类类型（class type），有点元实例对象的感觉</em></p>
 <ol>
 <li><blockquote>
@@ -367,16 +371,17 @@
 </ul>
 </li>
 </ol>
-<h2 id="“正则表达式”"><a href="#“正则表达式”" class="headerlink" title="“正则表达式”"></a>“正则表达式”</h2><ol>
-<li><p>“\ “：</p>
-<ul>
-<li>其他语言中，\表示“插入一个普通的反斜杠，不要给它任何特殊意义”，而\在java中表示“我要插入一个正则表达式的反斜线，所以其后的字符具有特殊意义”。<br><br><strong>“2个正则反斜杠等于其他语言中的1个正常反斜杠。”</strong></li>
+<hr>
+<h2 id="“正则表达式”"><a href="#“正则表达式”" class="headerlink" title="“正则表达式”"></a>“正则表达式”</h2><h3 id="“-“"><a href="#“-“" class="headerlink" title="“\ “"></a>“\ “</h3><ul>
+<li>其他语言中，\表示“插入一个普通的反斜杠，不要给它任何特殊意义”，而\在java中表示“我要插入一个正则表达式的反斜线，所以其后的字符具有特殊意义”。<br>  <br><strong>“2个正则反斜杠等于其他语言中的1个正常反斜杠。”</strong><ul>
 <li>一些反斜杠相关的表示方式：<blockquote>
 <p><code>\\\\</code> <em>普通的反斜线</em> …<code>\\d</code>表示数字… <code>\\D</code>非数字字符(大写表取非)…<code>\\w</code>单词字符…<code>\\W</code>非单词字符<br><code>\\s</code>空白符…<code>\\S</code>非空白符…<code>\\b</code>词的边界，放的位置和行边界^$一样，最前或最后…<code>\\B</code>非词的边界</p>
 </blockquote>
 </li>
 </ul>
 </li>
+</ul>
+<ol>
 <li><p>有特殊含义的保留字符：</p>
 <ul>
 <li><p>如果要剥除保留字符的特殊含义，把它当做普通字符看待，要加\，正则表达式的反斜线哟～</p>
@@ -478,7 +483,8 @@
 </ul>
 </li>
 </ol>
-<h2 id="“IO流”"><a href="#“IO流”" class="headerlink" title="“IO流”"></a>“IO流”</h2><ol>
+<hr>
+<h1 id="“IO流”"><a href="#“IO流”" class="headerlink" title="“IO流”"></a>“IO流”</h1><ol>
 <li><p>File类<br> <br><em>更适合叫“FilePath”</em></p>
 <ul>
 <li>既表示一个特定文件的目录的名称(name)，也代表一个文件的目录下的所有文件的目录的名称(names)</li>
@@ -668,139 +674,130 @@
 </ol>
 </li>
 </ol>
-<h2 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h2><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><ol>
-<li>java.lang.annotation.Annotation<ul>
+<hr>
+<h2 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h2><hr>
+<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><h2 id="java-lang-annotation-Annotation"><a href="#java-lang-annotation-Annotation" class="headerlink" title="java.lang.annotation.Annotation"></a>java.lang.annotation.Annotation</h2><ul>
 <li>Java使用Annotation接口来代表程序元素前面的注解，该接口是所有Annotation类型的父接口。</li>
 </ul>
-</li>
-<li>java.lang.reflect.AnnotatedElement<ul>
-<li>AnnotatedElement 接口代表程序中可以接受注解的程序元素，是所有程序元素（Class、Method、Field、Package和Constructor）的父接口。获取该接口对象之后，即可以调用对象方法来访问Annotation信息，常用有如下几个：<ol>
+<h2 id="java-lang-reflect-AnnotatedElement"><a href="#java-lang-reflect-AnnotatedElement" class="headerlink" title="java.lang.reflect.AnnotatedElement"></a>java.lang.reflect.AnnotatedElement</h2><ul>
+<li>AnnotatedElement 接口代表程序中可以接受注解的程序元素，是所有程序元素（Class、Method、Field、Package和Constructor）的父接口。</li>
+<li>获取该接口对象之后，即可以调用对象方法来访问Annotation信息，常用有如下几个：<ol>
 <li>getAnnotations()：返回该程序元素上存在的所有注解。</li>
 <li>isAnnotationPresent(annotation.class)：判断该程序元素上是否包含指定类型的注解</li>
 <li>getDeclaredAnnotations()：返回直接存在于此元素上的所有注释。与此接口中的其他方法不同，该方法将忽略继承的注释。</li>
 </ol>
 </li>
 </ul>
-</li>
-</ol>
-<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><ol>
-<li>作用<ul>
+<hr>
+<h1 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
 <li>要处理很多任务，要将他们交织在一起，应用并发能够更有效地利用计算机</li>
 <li>能够更好地组织代码</li>
 <li>要更便于用户使用</li>
 </ul>
-</li>
-<li><p>注意点</p>
-<ul>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
 <li>可以运行多个独立的任务</li>
 <li>必须考虑这些任务关闭时，可能出现的所有问题</li>
 <li>任务可能在共享资源上彼此相互交涉，互斥锁可以用来避免这种冲突</li>
 <li>如果任务设置不仔细，可能会出现死锁</li>
 </ul>
-</li>
-<li><p>基本</p>
-<ul>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><ul>
 <li>Runnable接口</li>
 <li>Thread类</li>
-<li>Executors类管理多个不同的Thread<ul>
+</ul>
+<h3 id="Executors类管理多个不同的Thread"><a href="#Executors类管理多个不同的Thread" class="headerlink" title="Executors类管理多个不同的Thread"></a>Executors类管理多个不同的Thread</h3><ul>
 <li>CachedThreadPool 最常用的能够为每个task提供1个thread</li>
 <li>FixedThreadPool 决定了thread的总数，一般考虑提高效率才用到它</li>
 <li>SingleThreadPool (不需要考虑同步问题）只有一条thread，没轮到的只能堵塞，每个task完成之后结束对thread的占用</li>
 <li>shutDownNow() 对所有的tasks逐个调用interrupt()，state = STOP，停止所有正在执行/等待执行的tasks</li>
 <li>shutDown() 相对温柔，state = SHUTDOWN，不能往线程池添加任务，对等待线程池中tasks调用interrupt,停止所有等待执行的tasks</li>
 </ul>
-</li>
-<li>Callable <em>call()而不是run()</em><ul>
+<h3 id="Callable-call-而不是run"><a href="#Callable-call-而不是run" class="headerlink" title="Callable call()而不是run()"></a>Callable <em>call()而不是run()</em></h3><ul>
 <li>submit()产生Future对象，参数化call()的返回值</li>
 <li>get()得到Future的返回值对象，直到isDone()==true之前都是堵塞的</li>
 <li>isDone()判断Future对象是否完成返回参数</li>
 </ul>
-</li>
-<li>sleep 更加直观的Java SE5用法：TimeUnit.SECONDS.sleep(10);</li>
-<li>setPriority 在构建器中设置priority并没有好处，因为这时候的task还没启动（通常在run()里早点设置）<ul>
+<h3 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h3><p>更加直观的Java SE5用法：TimeUnit.SECONDS.sleep(10);</p>
+<h3 id="setPriority"><a href="#setPriority" class="headerlink" title="setPriority"></a>setPriority</h3><ul>
+<li>在构建器中设置priority并没有好处，因为这时候的task还没启动（通常在run()里早点设置）</li>
 <li>不同操作系统优先等级也不尽相同，虽然JDK提供10个等，但通常用Thread.MAXMAX_PRIORITY/NORM_PRIORITY/MIN_PRIORITY三个，提供可移植性</li>
 </ul>
-</li>
-<li>volatile 关键字，保证编译器不会对数据做优化处理</li>
-<li>yield 使得<em>同等优先级</em>的thread有机会运行（不能保证）</li>
-<li>daemon 后台线程，但都是些无关紧要的。只要所有non-daemon都结束了，daemon线程立马完蛋，随时被断<ul>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>关键字，保证编译器不会对数据做优化处理</p>
+<h3 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h3><p>使得<em>同等优先级</em>的thread有机会运行（不能保证）</p>
+<h3 id="daemon"><a href="#daemon" class="headerlink" title="daemon"></a>daemon</h3><p>后台线程，但都是些无关紧要的。只要所有non-daemon都结束了，daemon线程立马完蛋，随时被断</p>
+<ul>
 <li>daemon线程中创建的任何线程会自动地变成daemon的</li>
 </ul>
-</li>
-<li>ThreadFactory 一个类，传入Runnable，还你一个Thread,可以作为参数传入重载的Executors.newCachedThreadPool()<ul>
+<h3 id="ThreadFactory"><a href="#ThreadFactory" class="headerlink" title="ThreadFactory"></a>ThreadFactory</h3><p>一个类，传入Runnable，还你一个Thread,可以作为参数传入重载的Executors.newCachedThreadPool()</p>
+<ul>
 <li>可以方便地指定生产出来的线程是否daemon、是否UncaughtExceptionHandler及其他操作</li>
 </ul>
-</li>
-<li>join() 将一个新的thread强行插入当前thread中间，原来的thread被挂起，直到加入的thread结束<ul>
+<h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p>将一个新的thread强行插入当前thread中间，原来的thread被挂起，直到加入的thread结束</p>
+<ul>
 <li>join可以重载一个超时参数，超过一定时间新thread还没结束就回到原来的thread</li>
 <li>用类库中的构件如CyclicBarrier比join()会更合适</li>
 </ul>
-</li>
-<li>isInterrupted() 如果当前有中断发生，就会变成true。<ul>
+<h3 id="isInterrupted"><a href="#isInterrupted" class="headerlink" title="isInterrupted()"></a>isInterrupted()</h3><p>如果当前有中断发生，就会变成true。</p>
+<ul>
 <li>但是在中断异常被捕捉到之后，原来的结果就会被清空。所以在catch语句中它为false</li>
 </ul>
-</li>
-<li>interrupt()<ul>
+<h3 id="interrupt"><a href="#interrupt" class="headerlink" title="interrupt()"></a>interrupt()</h3><ul>
 <li>sleep()是interruptible的方法，synchronized和IO是不可中断的方法</li>
 </ul>
-</li>
-<li>Future 可以用submit()代替execute()来启动线程<ul>
+<h3 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h3><p>可以用submit()代替execute()来启动线程</p>
+<ul>
 <li>不同的是前者能够返回一个Future对象，这个Future虽然不能get()到什么东西，但是可以用close中断线程</li>
 </ul>
-</li>
-<li>Thread.setDefaultUncaughtExceptionHandler() 可以指定主线程中的uncaughtExeption()来处理<ul>
+<h3 id="Thread-setDefaultUncaughtExceptionHandler"><a href="#Thread-setDefaultUncaughtExceptionHandler" class="headerlink" title="Thread.setDefaultUncaughtExceptionHandler()"></a>Thread.setDefaultUncaughtExceptionHandler()</h3><p>可以指定主线程中的uncaughtExeption()来处理</p>
+<ul>
 <li>通常情况下，Thread中的异常不能被外部的其他线程处理</li>
 </ul>
-</li>
-<li>synchronized 能够提供上锁状态，在上锁状态里没有其它线程能够截断里面的操作，直到操作完成<ul>
+<h3 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h3><p>能够提供上锁状态，在上锁状态里没有其它线程能够截断里面的操作，直到操作完成</p>
+<ul>
 <li>使用private关键字也很重要，否则并不能阻止其他线程对上锁区间的访问</li>
 <li>对重要的共同资源的访问的<strong>所有相关方法</strong>都必须有锁</li>
 </ul>
-</li>
-<li>lock 使用lock.lock()和lock.unlock()同样能上锁<ul>
+<h3 id="lock"><a href="#lock" class="headerlink" title="lock"></a>lock</h3><p>使用lock.lock()和lock.unlock()同样能上锁</p>
+<ul>
 <li>性能上lock比synchronized好些</li>
 <li>lock还提供了tryLock：尝试获取上锁状态、尝试获取锁超时自动放弃等功能</li>
-</ul>
-</li>
-<li>volatile 关键词，简单但又非常容易出错，读取性能好，说明某个参数可能会被意想不到地改变<ul>
+<li>volatile 关键词，简单但又非常容易出错，读取性能好，说明某个参数可能会被意想不到地改变</li>
 <li>一般来说，除了long和double之外的基本类型都是原子性的，也就是说自动在上锁状态下完成读写返回等</li>
 <li>使用了volatile关键字，能够让long、double也拥有原子性</li>
 <li>保证了可见性，即释放锁之前对共享数据的更改，对下一个获得该锁的线程是可见的。保证了共享数据的同步</li>
 <li>用于作为状态标识，让flag可以被多个线程访问：通常编译器优化是指编译器只会保存最后一个被修改的本线程参数值，但是在多线程工作中，一个参数可能会在另外一个线程中被修改，因此需要将每个变化值保存在寄存器里，即不做优化</li>
 </ul>
-</li>
-<li>AtomicInteger 通过用封装对象类使用primitive，自动是同步的，省掉了synchronized</li>
-<li>ThreadLocal 线程安全的共享对象<ul>
+<h3 id="AtomicInteger"><a href="#AtomicInteger" class="headerlink" title="AtomicInteger"></a>AtomicInteger</h3><p>通过用封装对象类使用primitive，自动是同步的，省掉了synchronized</p>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><p>线程安全的共享对象</p>
+<ul>
 <li>除了synchronize之外的另外一个防止共同资源被错误地修改的办法，就是消除变量的共享</li>
 <li>为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。<em>相当用空间换时间</em></li>
 </ul>
-</li>
-<li>线程状态：<ul>
+<h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><ul>
 <li>New</li>
 <li>Runnable 这里是一个就绪状态，might or might not be running at any moment</li>
 <li>Blocked</li>
 <li>Dead</li>
 </ul>
-</li>
-<li>wait()/notifyAll() for Object, await()/signal() for Condition<ul>
+<h3 id="wait-notifyAll-for-Object"><a href="#wait-notifyAll-for-Object" class="headerlink" title="wait()/notifyAll() for Object"></a>wait()/notifyAll() for Object</h3><ul>
 <li>wait()能够挂起线程，使得它的锁能够被释放和重用，和sleep/yield的占用锁不同</li>
 <li>wait()重载：一种和sleep类似，有参数n，能够等待n个毫秒，但是可以被notify叫醒；一种无参数，常用，等待直到被notify</li>
 <li>wait() 应用一个某条件的的while包围起来，直到while里面满足特定的条件，否则该线程应被一直挂起</li>
 <li>锁也是所有对象的一部分，非synchronized块中想要调用wait/notifyAll等方法前必须获取锁（新建一个synchronized(Object)块）</li>
 <li>notifyAll()的作用是叫醒当前Object锁上面所有wait的线程，使得它们能够被调用（但不代表会被调用）</li>
+</ul>
+<h3 id="await-signal-for-Condition"><a href="#await-signal-for-Condition" class="headerlink" title="await()/signal() for Condition"></a>await()/signal() for Condition</h3><ul>
 <li>单个的Lock将产生一个Condition对象，它需要在锁里用且允许挂起，主要作用是显式实现一个睡/醒对象</li>
 <li>signalAll()比notifyAll()要更加安全 </li>
 </ul>
-</li>
-<li>同步队列：LinkedBlockingQueue/ArrayBlockingQueue<ul>
+<h2 id="同步队列"><a href="#同步队列" class="headerlink" title="同步队列"></a>同步队列</h2><h3 id="LinkedBlockingQueue-ArrayBlockingQueue"><a href="#LinkedBlockingQueue-ArrayBlockingQueue" class="headerlink" title="LinkedBlockingQueue/ArrayBlockingQueue"></a>LinkedBlockingQueue/ArrayBlockingQueue</h3><ul>
 <li>在任何时候都只允许一个task插入或移除元素</li>
 <li>比用wait()/notifyAll()简化和更可靠</li>
 <li>如果task尝试从queue中取出一个对象而queue里面是空的，queue将会挂起直到有更多元素时恢复</li>
 <li>将任务从main()中的线程池转移到了Queue中，在别的方法里面就可以建立线程，启动/中断</li>
 <li>一般是一个queue一个线程，它里面的tasks都是用的这个线程，因为queue里面元素是互斥的，不用考虑synchronized问题</li>
 </ul>
-</li>
-<li>PipedReader/PipedWriter 用于线程间通信，看做是生产者消费者的变体。<ul>
+<h3 id="PipedReader-PipedWriter"><a href="#PipedReader-PipedWriter" class="headerlink" title="PipedReader/PipedWriter"></a>PipedReader/PipedWriter</h3><p>用于线程间通信，看做是生产者消费者的变体。</p>
+<ul>
 <li>PipedWriter是一个独立的对象，而PipedReader必须在构造器中传入一个PipedWriter</li>
 <li>当PipedReader调用时，会检测PipedWriter，如果没有更多的数据将自动堵塞</li>
 <li>最大不同：可以中断的<em>普通IO不可中断</em></li>
@@ -809,16 +806,14 @@
 </blockquote>
 </li>
 </ul>
-</li>
-<li>BlockingQueue<ol>
+<h3 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h3><ol>
 <li>ArrayBlockingQueue</li>
 <li>DelayQueue</li>
 <li>LinkedBlockingQueue</li>
 <li>PriorityBlockingQueue</li>
 <li>SynchronousQueue</li>
 </ol>
-</li>
-<li>死锁四个条件<ol>
+<h3 id="死锁四个条件"><a href="#死锁四个条件" class="headerlink" title="死锁四个条件"></a>死锁四个条件</h3><ol>
 <li>相互排斥。至少有1个资源是不可分享的</li>
 <li>至少一个任务本身持有资源，却又等着要从另外一个任务中拿到资源</li>
 <li>资源不能够被任务抢占，任务必须把资源释放当做普通事件</li>
@@ -827,40 +822,34 @@
 <ul>
 <li>防止死锁最容易的方法就是破坏第四个条件，阻止环形等待出现</li>
 </ul>
-</li>
-<li>TimeUnit 是一个帮助统一时间表达的枚举类<ul>
+<h3 id="TimeUnit"><a href="#TimeUnit" class="headerlink" title="TimeUnit"></a>TimeUnit</h3><p>是一个帮助统一时间表达的枚举类</p>
+<ul>
 <li>它本身不包含时间信息，但能够实现不同时间单位之间的转换</li>
 <li>它能够将long类型的时间转变为方便读懂的对象，也返回long类型的时间</li>
 </ul>
-</li>
-<li>System中计算时间的方法<ul>
+<h3 id="System中计算时间的方法"><a href="#System中计算时间的方法" class="headerlink" title="System中计算时间的方法"></a>System中计算时间的方法</h3><ul>
 <li>nanoTime() 可以计算精确时间，单位是nanosecond，它的值和日期无关（仅用于测量时间的相对变化）</li>
 <li>nanoTime 返回值甚至可以为负的，因为它看重的只是纳秒级的时间差</li>
 <li>currentTimeMillis() 以millisecond返回当前时间，可以用来计算日期、与Date转换</li>
 <li>currentTimeMilis 返回的是1970-1-1凌晨到现在的毫秒数，为绝对时间</li>
 </ul>
-</li>
+<h2 id="新类库的构件"><a href="#新类库的构件" class="headerlink" title="新类库的构件"></a>新类库的构件</h2><ul>
+<li>通过PriorityQueue，使得超时的Item最先被处理，利用BlockingQueue，将Item处理的操作阻塞住。避免了遍历方式的轮训，提高了性能。在很多需要回收对象的场景都能用上。</li>
 </ul>
-</li>
-<li>新类库的构件</li>
-</ol>
+<h3 id="CountDownLatch-（倒数门闩）"><a href="#CountDownLatch-（倒数门闩）" class="headerlink" title="CountDownLatch （倒数门闩）"></a>CountDownLatch （倒数门闩）</h3><p>用来synchronize一个或多个任务</p>
 <ul>
-<li>通过PriorityQueue，使得超时的Item最先被处理，利用BlockingQueue，将Item处理的操作阻塞住。避免了遍历方式的轮训，提高了性能。在很多需要回收对象的场景都能用上。<ul>
-<li>CountDownLatch （倒数门闩）用来synchronize一个或多个任务<ul>
 <li>所有tasks中CountDownLatch.awaits()的调用都会被堵塞</li>
 <li>直到tasks调用的CountDownLatch.countDown()使count达到0之时，tasks中被堵塞的(awaits)才会运行</li>
 <li>注意awaits和countDown中应工作在同一个CountDownLatch上</li>
 <li>初始计数值count不能被重置</li>
 <li>用于将一个问题分割成n个独立的可解决任务</li>
 </ul>
-</li>
-<li>CyclicBarrier 循环栏杆 = 可复用的倒数门闩CountDownLatch<ul>
+<h3 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h3><p>循环栏杆 = 可复用的倒数门闩CountDownLatch</p>
+<ul>
 <li>指定数量n（参数#1）的synchronize的tasks共同完成之后，栏杆失效。</li>
 <li>执行（参数#2）一个栏杆的最后动作Runnable（或不执行），该动作依附最后一个task的thread上执行，推进到下一轮</li>
-<li></li>
 </ul>
-</li>
-<li>DelayQueue&lt;? extends Delayed&gt; <ul>
+<h3 id="DelayQueue-lt-extends-Delayed-gt"><a href="#DelayQueue-lt-extends-Delayed-gt" class="headerlink" title="DelayQueue&lt;? extends Delayed&gt;"></a>DelayQueue&lt;? extends Delayed&gt;</h3><ul>
 <li>是PriorityQueue的一个变体</li>
 <li>成员必须实现Delayed接口，这个接口的实现方法compareTo()/getDelay()决定了成员的优先顺序</li>
 <li>哪个成员被踢出expire队列由它们谁更“紧急”（即delay时间最短\最delay no more的）决定</li>
@@ -871,11 +860,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li>Deque 用于取代Stack</li>
-</ul>
-</li>
-</ul>
+<h3 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h3><p>用于取代Stack</p>
 
             
         
