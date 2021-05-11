@@ -1,0 +1,1 @@
+#anime{position:relative;color:#333;font-weight:700;animation:slidein 5s linear infinite;display:inline-block}@keyframes slidein{0%{left:0}to{left:500px}}
