@@ -24,6 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               slug
             }
+            excerpt(format: HTML, pruneLength: 10000)
           }
         }
       }
@@ -39,6 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
+        excerpt: node.excerpt,
       },
     });
   });
