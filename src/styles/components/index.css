@@ -1,0 +1,30 @@
+.bg-anime-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-anime {
+  font-size: 30vh;
+  width: 200vw;
+  height: 50vh;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.05);
+  font-weight: 700;
+  animation: 5s linear infinite slidein;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateX(-50vw);
+  }
+  100% {
+    transform: translateX(50vw);
+  }
+}

@@ -1,17 +1,20 @@
 import { Link, graphql } from "gatsby";
 import React from "react";
 import { css } from "@emotion/react";
-
+import "../styles/components/index.css";
 import Layout from "../components/layout";
+
 export default ({ data }) => {
   console.log(data);
   return (
     <Layout>
-      <h1>Hi! I'm building a fake Gatsby site as part of a tutorial!</h1>
-      <p>
-        What do I like to do? Lots of course but definitely enjoy building
-        websites.
-      </p>
+      <div className="bg-anime-wrapper">
+        <div className="bg-anime">
+          /////////////////////////////////////////////////////
+        </div>
+      </div>
+      <h2>Hi there</h2>
+      <p>I am pzij, and am a curious web developer levelling up in progress.</p>
       <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
