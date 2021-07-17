@@ -1,4 +1,4 @@
-import { Link, graphql } from "gatsby";
+import { Link, graphql, navigate } from "gatsby";
 import React, { useEffect } from "react";
 import { css } from "@emotion/react";
 import "../styles/components/index.css";
@@ -37,6 +37,17 @@ export default () => {
         }
       });
       console.log("[index]", triggedIndex);
+      switch (triggedIndex) {
+        case 0:
+          navigate("/blog/");
+          break;
+        case 1:
+          navigate("/about/");
+          break;
+        case 2:
+          navigate("/contact/");
+          break;
+      }
     }
 
     const getElements = (x, y) => {
@@ -51,11 +62,18 @@ export default () => {
 
     function drawStuff(event, ctx) {
       // console.log(event.pageX, event.pageY);
+
       ctx.fillStyle = "green"; // 拿到context就能够实现 HTMLCanvasElement 接口进行渲染了
       ctx.fillRect(event.pageX / 10, event.pageY / 10, 150, 100); // x, y, width, height
+      ctx.fillStyle = "white";
+      ctx.font = "18px helvetica";
+      ctx.fillText("Blog", event.pageX / 10 + 50, event.pageY / 10 + 50);
 
       ctx.fillStyle = "black";
       ctx.fillRect(200 + event.pageX / 50, 400 - event.pageY / 50, 150, 100);
+      ctx.fillStyle = "white";
+      ctx.font = "18px helvetica";
+      ctx.fillText("About", 250 + event.pageX / 50, 450 - event.pageY / 50);
 
       ctx.fillStyle = "white";
       ctx.fillRect(
@@ -63,6 +81,13 @@ export default () => {
         300 - Math.sqrt(event.pageY * 3),
         100,
         150
+      );
+      ctx.fillStyle = "black";
+      ctx.font = "18px helvetica";
+      ctx.fillText(
+        "Contact",
+        820 + Math.sin(event.pageX),
+        375 - Math.sqrt(event.pageY * 3)
       );
 
       ctx.fillStyle = "gray";
