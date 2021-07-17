@@ -1,58 +1,100 @@
 import { Link, graphql } from "gatsby";
-import React from "react";
+import React, { useEffect } from "react";
 import { css } from "@emotion/react";
 import "../styles/components/index.css";
 import Layout from "../components/layout";
+export default () => {
+  useEffect(() => {
+    const canvas = document.getElementById("canvas"); // 获取元素
 
-export default ({ data }) => {
-  console.log(data);
+    const ctx = canvas.getContext("2d"); // 获取元素的 context
+
+    drawStuff({ pageX: 100, pageY: 100 }, ctx);
+    window.addEventListener("mousemove", (event) => {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      drawStuff(event, ctx);
+    });
+
+    window.addEventListener("resize", resizeCanvas, false);
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    canvas.addEventListener("mousedown", handleCanvasMouseClick);
+
+    function handleCanvasMouseClick(event) {
+      console.log("[event]", event);
+      let triggedIndex = -1;
+      getElements(event.x, event.y).forEach(([x, y, width, height], index) => {
+        if (
+          event.x > x &&
+          event.x < x + width &&
+          event.y > y &&
+          event.y < y + height
+        ) {
+          triggedIndex = index;
+        }
+      });
+      console.log("[index]", triggedIndex);
+    }
+
+    const getElements = (x, y) => {
+      return [
+        [x / 10, y / 10, 150, 100],
+        [200 + x / 50, 400 - y / 50, 150, 100],
+        [800 + Math.sin(x), 300 - Math.sqrt(y * 3), 100, 150],
+      ];
+    };
+
+    resizeCanvas();
+
+    function drawStuff(event, ctx) {
+      // console.log(event.pageX, event.pageY);
+      ctx.fillStyle = "green"; // 拿到context就能够实现 HTMLCanvasElement 接口进行渲染了
+      ctx.fillRect(event.pageX / 10, event.pageY / 10, 150, 100); // x, y, width, height
+
+      ctx.fillStyle = "black";
+      ctx.fillRect(200 + event.pageX / 50, 400 - event.pageY / 50, 150, 100);
+
+      ctx.fillStyle = "white";
+      ctx.fillRect(
+        800 + Math.sin(event.pageX),
+        300 - Math.sqrt(event.pageY * 3),
+        100,
+        150
+      );
+
+      ctx.fillStyle = "gray";
+      // ctx.moveTo(500 + event.pageX / 10, 20 + event.pageY / 20);
+      // ctx.lineTo(510 + event.pageX / 10, 20 + event.pageY / 20);
+      // ctx.lineTo(200 + event.pageX / 50, 520 + event.pageY / 50);
+      // ctx.lineTo(190 + event.pageX / 50, 520 + event.pageY / 50);
+      // ctx.closePath();
+      // ctx.fill();
+
+      ctx.rotate((25 * Math.PI) / 180);
+      ctx.fillRect(
+        700 + Math.sqrt(event.pageX),
+        -200 + Math.log1p(event.pageY),
+        15,
+        600
+      );
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
+  }, []);
+
   return (
-    <Layout>
-      <div className="bg-anime-wrapper">
-        <div className="bg-anime">
-          /////////////////////////////////////////////////////
-        </div>
-      </div>
-      <h2>Hi there</h2>
-      <p>I am pzij, and am a curious web developer levelling up in progress.</p>
-      <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <div key={node.id}>
-          <Link
-            to={node.fields.slug}
-            css={css`
-              text-decoration: none;
-              color: inherit;
-            `}
-          >
-            <h3>
-              {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
-            </h3>
-            <p>{node.excerpt}</p>
-          </Link>
-        </div>
-      ))}
-    </Layout>
+    <div
+      className="container"
+      style={{
+        display: `flex`,
+        width: `100%`,
+        height: `100vh`,
+        background: `orange`,
+      }}
+    >
+      <canvas id="canvas"></canvas>
+    </div>
   );
 };
-
-export const query = graphql`
-  query {
-    allMarkdownRemark {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-          }
-          fields {
-            slug
-          }
-          excerpt
-        }
-      }
-    }
-  }
-`;

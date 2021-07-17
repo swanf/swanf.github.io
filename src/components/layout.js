@@ -25,7 +25,7 @@ export default ({ children }) => (
     >
       <header style={{ marginBottom: `1.5rem` }}>
         <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-          <h3 style={{ display: `inline` }}>PZIJ</h3>
+          <h3 style={{ display: `inline` }}>PaxtonPan</h3>
         </Link>
         <ul style={{ listStyle: `none`, float: `right` }}>
           <ListLink to="/">Home</ListLink>
